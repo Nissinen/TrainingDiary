@@ -2,6 +2,6 @@
 
 ###Sisältää
 
-*PHP:n harkkatyö
-*Tietokantojen harkkatyö
-*Ohjelmistosuunnittelun harkkatyö
+* PHP:n harkkatyö
+* Tietokantojen harkkatyö
+* Ohjelmistosuunnittelun harkkatyö

@@ -1,7 +1,8 @@
 ## TrainingDiary
 
-###Sisältää
+### Sisältää
 
 * PHP:n harkkatyö
 * Tietokantojen harkkatyö
 * Ohjelmistosuunnittelun harkkatyö
+* Aikataulutuksen

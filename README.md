@@ -1,2 +1,7 @@
-# TrainingDiary
-PHP-harkka
+## TrainingDiary
+
+###Sisältää
+
+*PHP:n harkkatyö
+*Tietokantojen harkkatyö
+*Ohjelmistosuunnittelun harkkatyö

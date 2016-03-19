@@ -44,6 +44,7 @@ class UsersTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
+        /*
         $validator
             ->integer('id')
             ->allowEmpty('id', 'create');
@@ -66,7 +67,11 @@ class UsersTable extends Table
             ->requirePresence('lastname', 'create')
             ->notEmpty('lastname');
 
-        return $validator;
+        return $validator;*/
+        return $validator
+            ->notEmpty('username', 'A username is required')
+            ->notEmpty('password', 'A password is required')
+            ->notEmpty('lastname');
     }
 
     /**

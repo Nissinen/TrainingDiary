@@ -1,0 +1,61 @@
+CREATE TABLE users ( 
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ email VARCHAR(50) NOT NULL,
+ password VARCHAR(50) NOT NULL,
+ firstname VARCHAR(50) NOT NULL,
+ lastname VARCHAR(50) NOT NULL,
+ created DATETIME,
+ modified DATETIME,
+ UNIQUE KEY (email)
+);
+
+CREATE TABLE trainings ( 
+id INT AUTO_INCREMENT PRIMARY KEY,
+ user_id INT NOT NULL,
+ title VARCHAR(50) NOT NULL,
+ duration VARCHAR(20),
+ created DATETIME,
+ modified DATETIME,
+ FOREIGN KEY user_trainings_key (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE exercises ( 
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ title VARCHAR(50) NOT NULL,
+ maxweight INT(3),
+ UNIQUE KEY (title)
+);
+
+CREATE TABLE trainings_exercises (
+training_id INT NOT NULL,
+ exercise_id INT NOT NULL, 
+PRIMARY KEY (training_id, exercise_id),
+ FOREIGN KEY exercises_trainings_key(exercise_id) REFERENCES exercises(id),
+ FOREIGN KEY trainings_exercises_key(training_id) REFERENCES trainings(id)
+);
+
+CREATE TABLE results ( 
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ training_id INT NOT NULL,
+ comment VARCHAR(255) NOT NULL,
+ created DATETIME,
+ modified DATETIME,
+ FOREIGN KEY trainings_result_key (training_id) REFERENCES trainings(id)
+);
+
+CREATE TABLE exerciseinformations ( 
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ title VARCHAR(50),
+ weight INT(3) NOT NULL,
+ breakduration VARCHAR(20),
+ repetition INT(3) NOT NULL,
+ setAmount INT(2) NOT NULL
+);
+
+CREATE TABLE exercises_exerciseinformations(
+exercise_id INT NOT NULL,
+ exerciseinformation_id INT NOT NULL, 
+PRIMARY KEY (exercise_id, exerciseinformation_id),
+ FOREIGN KEY exerciseinformations_exercises(exerciseinformation_id) REFERENCES exerciseinformations(id),
+ FOREIGN KEY exercises_exerciseinformations_key(exercise_id) REFERENCES exercises(id)
+);

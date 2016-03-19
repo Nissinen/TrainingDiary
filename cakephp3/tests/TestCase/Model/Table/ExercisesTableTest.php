@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\HenkiloTable;
+use App\Model\Table\ExercisesTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\HenkiloTable Test Case
+ * App\Model\Table\ExercisesTable Test Case
  */
-class HenkiloTableTest extends TestCase
+class ExercisesTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\HenkiloTable
+     * @var \App\Model\Table\ExercisesTable
      */
-    public $Henkilo;
+    public $Exercises;
 
     /**
      * Fixtures
@@ -24,7 +24,13 @@ class HenkiloTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.henkilo'
+        'app.exercises',
+        'app.exerciseinformations',
+        'app.exercises_exerciseinformations',
+        'app.trainings',
+        'app.users',
+        'app.results',
+        'app.trainings_exercises'
     ];
 
     /**
@@ -35,8 +41,8 @@ class HenkiloTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Henkilo') ? [] : ['className' => 'App\Model\Table\HenkiloTable'];
-        $this->Henkilo = TableRegistry::get('Henkilo', $config);
+        $config = TableRegistry::exists('Exercises') ? [] : ['className' => 'App\Model\Table\ExercisesTable'];
+        $this->Exercises = TableRegistry::get('Exercises', $config);
     }
 
     /**
@@ -46,7 +52,7 @@ class HenkiloTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Henkilo);
+        unset($this->Exercises);
 
         parent::tearDown();
     }

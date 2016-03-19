@@ -1,13 +1,13 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\HenkiloController;
+use App\Controller\TrainingsController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * App\Controller\HenkiloController Test Case
+ * App\Controller\TrainingsController Test Case
  */
-class HenkiloControllerTest extends IntegrationTestCase
+class TrainingsControllerTest extends IntegrationTestCase
 {
 
     /**
@@ -16,7 +16,13 @@ class HenkiloControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.henkilo'
+        'app.trainings',
+        'app.users',
+        'app.results',
+        'app.exercises',
+        'app.exerciseinformations',
+        'app.exercises_exerciseinformations',
+        'app.trainings_exercises'
     ];
 
     /**

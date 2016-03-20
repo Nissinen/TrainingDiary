@@ -1,0 +1,18 @@
+
+h1{
+	color:red;
+}
+
+#Container{
+	width:30%;
+	margin:auto;
+}
+
+.Content{
+	margin:auto;
+}
+
+.ButtonContent{
+	margin:auto;
+	width:100px;
+}

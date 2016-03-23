@@ -53,12 +53,15 @@ class AppController extends Controller
 				]
 			],
 			'loginAction' => [
-				'controller' => 'Users',
+				'controller' => 'users',
 				'action' => 'login'
-			]
+			],
+            'loginRedirect' => [
+                'controller' => 'users',
+                'action' => 'index'
+            ]
 		]);
 	}
-
 
     /**
      * Before render callback.

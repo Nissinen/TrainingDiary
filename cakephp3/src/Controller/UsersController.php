@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 
 /**
@@ -11,7 +12,9 @@ use App\Controller\AppController;
  */
 class UsersController extends AppController
 {
-
+    public function beforeFilter(Event $event) {
+        parent::beforeFilter($event);
+    }
     /**
      * Index method
      *
@@ -25,18 +28,20 @@ class UsersController extends AppController
 
     }
 
-public function login(){
-		if($this->request->is('post')) {
-			$user = $this->Auth->identify();
-			if($user) {
-				$this->Auth->setUser($user);
-				return $this->redirect($this->Auth->redirectUrl());
-			}
-			
-			//User not identified
-			$this->Flash->error('Your username or password is incorrect');
-		}
-	}
+    public function login(){
+        $user = $this->Auth->identify();
+        //debug($this->Auth);
+            if($this->request->is('post')) {
+                if($user) {
+                    $this->Auth->setUser($user);
+                    return $this->redirect($this->Auth->redirectUrl());
+                }
+                //User not identified
+                $this->Flash->error('Your username or password is incorrect');
+            } else if($this->Auth->user('id')) {
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+        }
 
     public function logout()
     {

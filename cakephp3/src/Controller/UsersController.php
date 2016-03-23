@@ -14,7 +14,35 @@ class UsersController extends AppController
 {
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
+        $this->Auth->allow('add');
     }
+
+    /**
+     *  Overrides isAuthorized defined in AppController
+     *  Checks if user has sufficient privileges to deploy actions
+     */
+    public function isAuthorized($user)
+    {
+        // Users can edit their own information
+        if ($this->request->action === 'edit' && $user['role'] === 'user') {
+            $user_id = $this->request->params['pass'][0];
+            //debug($user_id);
+            if($user_id == $user['id']) {
+                return true;
+            }
+        }
+
+        // Anyone can access methods below
+        if ($this->request->action === 'index' ||
+            $this->request->action === 'view' ||
+            $this->request->action === 'logout' ||
+            $this->request->action === 'login') {
+            return true;
+        }
+
+        return parent::isAuthorized($user);
+    }
+
     /**
      * Index method
      *
@@ -25,7 +53,8 @@ class UsersController extends AppController
         $users = $this->paginate($this->Users);
         $this->set(compact('users'));
         $this->set('_serialize', ['users']);
-
+        $this->set('loggedUser', $this->Auth->user());
+        debug($this->Auth->user());
     }
 
     public function login(){
@@ -41,7 +70,7 @@ class UsersController extends AppController
             } else if($this->Auth->user('id')) {
                 return $this->redirect($this->Auth->redirectUrl());
             }
-        }
+    }
 
     public function logout()
     {
@@ -78,7 +107,7 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(['action' => 'add']);
+                return $this->setAction('login');
             }
             $this->Flash->error(__('Unable to add the user.'));
         }

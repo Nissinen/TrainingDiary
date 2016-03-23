@@ -13,6 +13,7 @@
 	</div>
 	<div class="ButtonContent">
 		<?= $this->Form->button(__('Login')); ?>
-		<?= $this->Form->end() ?>
+        <?= $this->Html->link('Register', '/users/add', array('class' => 'button')); ?>
+        <?= $this->Form->end() ?>
 	</div>
 </div>

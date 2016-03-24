@@ -12,6 +12,33 @@ class ExercisesController extends AppController
 {
 
     /**
+     *  Overrides isAuthorized defined in AppController
+     *  Checks if user has sufficient privileges to deploy actions
+     */
+    public function isAuthorized($user)
+    {
+        // Users can edit their own information
+        if ((($this->request->action === 'edit') || $this->request->action === 'delete')
+            && $user['role'] === 'user') {
+            $user_id = $this->request->params['pass'][0];
+            //debug($user_id);
+            if($user_id == $user['id']) {
+                return true;
+            }
+        }
+
+        // Anyone can access methods below
+        if ($this->request->action === 'index' ||
+            $this->request->action === 'view' ||
+            $this->request->action === 'add' ||
+            $this->request->action === 'delete') {
+            return true;
+        }
+
+        return parent::isAuthorized($user);
+    }
+
+    /**
      * Index method
      *
      * @return \Cake\Network\Response|null

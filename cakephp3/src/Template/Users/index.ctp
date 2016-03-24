@@ -2,9 +2,17 @@
 <nav class="large-3 medium-2 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Trainings'), ['controller' => 'Trainings', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Training'), ['controller' => 'Trainings', 'action' => 'add']) ?></li>
+        <li>
+            <?php
+                if($loggedUser['role'] == "admin") {
+                    echo $this->Html->link(__('New User'), ['action' => 'add']);
+                    echo $this->Html->link(__('Edit your profile'), ['action' => 'edit',$loggedUser['id']]);
+                }
+                if($loggedUser['role'] == "user") {
+                    echo $this->Html->link(__('Edit your profile'), ['action' => 'edit',$loggedUser['id']]);
+                }
+            ?>
+        </li>
     </ul>
 </nav>
 <div class="users index large-9 medium-8 columns content">

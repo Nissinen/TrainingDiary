@@ -15,6 +15,7 @@ class UsersController extends AppController
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
         $this->Auth->allow('add');
+        //$this->set('loggedUser', $this->Auth->user());
     }
 
     /**
@@ -53,8 +54,7 @@ class UsersController extends AppController
         $users = $this->paginate($this->Users);
         $this->set(compact('users'));
         $this->set('_serialize', ['users']);
-        $this->set('loggedUser', $this->Auth->user());
-        debug($this->Auth->user());
+        //debug($this->Auth->user());
     }
 
     public function login(){

@@ -2,10 +2,10 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Exercise'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Exerciseinformations'), ['controller' => 'Exerciseinformations', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Exerciseinformation'), ['controller' => 'Exerciseinformations', 'action' => 'add']) ?></li>
+        <!--<li><?= $this->Html->link(__('List Exerciseinformations'), ['controller' => 'Exerciseinformations', 'action' => 'index']) ?></li>-->
+        <!--<li><?= $this->Html->link(__('New Exerciseinformation'), ['controller' => 'Exerciseinformations', 'action' => 'add']) ?></li>-->
         <li><?= $this->Html->link(__('List Trainings'), ['controller' => 'Trainings', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Training'), ['controller' => 'Trainings', 'action' => 'add']) ?></li>
+        <!--<li><?= $this->Html->link(__('New Training'), ['controller' => 'Trainings', 'action' => 'add']) ?></li>-->
     </ul>
 </nav>
 <div class="exercises index large-9 medium-8 columns content">

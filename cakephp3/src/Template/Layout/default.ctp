@@ -13,7 +13,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'TrainingDiary';
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,19 +36,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <body>
     <nav class="top-bar expanded" data-topbar role="navigation">
         <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
-            </li>
+                <?= $this->element('navigation'); ?>
         </ul>
-        <section class="top-bar-section">
-            <ul class="right">
-			<!-- Display logout if logged in -->
-				<?php
-				if ($this->request->session()->read('Auth.User')) { 
-				echo "<li>",$this->Html->link('Logout', '/users/logout/', array('class' => 'button')),"</li>";
-				 } ?>
-              <!--  <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>  -->
+        <section>
+            <ul class="left">
+                <li>User: <?= $this->Html->link(__($loggedUser['username']), ['controller' => 'users', 'action' => 'view', $loggedUser['id']])?></li>
+                <li>ID: <?= $loggedUser['id'] ?></li>
+                <li>Role: <?= $loggedUser['role'] ?></li>
+                <li>Created: <?= $loggedUser['created'] ?></li>
             </ul>
         </section>
     </nav>

@@ -27,6 +27,11 @@ use Cake\Event\Event;
  */
 class AppController extends Controller
 {
+
+    public function beforeFilter(Event $event) {
+        $this->set('loggedUser', $this->Auth->user());
+    }
+
     /**
      * Initialization hook method.
      *
@@ -57,7 +62,7 @@ class AppController extends Controller
 				'action' => 'login'
 			],
             'loginRedirect' => [
-                'controller' => 'users',
+                'controller' => 'trainings',
                 'action' => 'index'
             ]
 		]);

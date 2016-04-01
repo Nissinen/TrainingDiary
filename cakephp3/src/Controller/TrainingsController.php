@@ -30,10 +30,10 @@ class TrainingsController extends AppController
         if ($this->request->action === 'index' ||
             $this->request->action === 'view' ||
             $this->request->action === 'add' ||
-            $this->request->action === 'edit' ||
             $this->request->action === 'delete') {
             return true;
         }
+        
         return parent::isAuthorized($user);
     }
 

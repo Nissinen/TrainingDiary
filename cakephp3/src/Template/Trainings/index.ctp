@@ -14,7 +14,6 @@
         <thead>
             <tr>
                 <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('user_id') ?></th>
                 <th><?= $this->Paginator->sort('title') ?></th>
                 <th><?= $this->Paginator->sort('duration') ?></th>
                 <th><?= $this->Paginator->sort('created') ?></th>
@@ -26,7 +25,6 @@
             <?php foreach ($trainings as $training): ?>
             <tr>
                 <td><?= $this->Number->format($training->id) ?></td>
-                <td><?= $training->has('user') ? $this->Html->link($training->user->id, ['controller' => 'Users', 'action' => 'view', $training->user->id]) : '' ?></td>
                 <td><?= h($training->title) ?></td>
                 <td><?= h($training->duration) ?></td>
                 <td><?= h($training->created) ?></td>

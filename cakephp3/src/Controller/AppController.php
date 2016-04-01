@@ -34,11 +34,8 @@ class AppController extends Controller
 
     /**
      * Initialization hook method.
-     *
      * Use this method to add common initialization code like loading components.
-     *
      * e.g. `$this->loadComponent('Security');`
-     *
      * @return void
      */
     public function initialize()
@@ -81,7 +78,6 @@ class AppController extends Controller
 
     /**
      * Before render callback.
-     *
      * @param \Cake\Event\Event $event The beforeRender event.
      * @return void
      */

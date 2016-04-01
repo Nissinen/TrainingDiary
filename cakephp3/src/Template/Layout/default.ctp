@@ -28,6 +28,7 @@ $cakeDescription = 'TrainingDiary';
 
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('cake.css') ?>
+    <?= $this->Html->css('main.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -40,10 +41,12 @@ $cakeDescription = 'TrainingDiary';
         </ul>
         <section>
             <ul class="left">
-                <li>User: <?= $this->Html->link(__($loggedUser['username']), ['controller' => 'users', 'action' => 'view', $loggedUser['id']])?></li>
-                <li>ID: <?= $loggedUser['id'] ?></li>
-                <li>Role: <?= $loggedUser['role'] ?></li>
-                <li>Created: <?= $loggedUser['created'] ?></li>
+                <?php if ($this->request->session()->read('Auth.User')) { ?>
+                    <li>User: <?= $this->Html->link(__($loggedUser['username']), ['controller' => 'users', 'action' => 'view', $loggedUser['id']])?></li>
+                    <li>ID: <?= $loggedUser['id'] ?></li>
+                    <li>Role: <?= $loggedUser['role'] ?></li>
+                    <li>Created: <?= $loggedUser['created'] ?></li>
+                <?php } ?>
             </ul>
         </section>
     </nav>

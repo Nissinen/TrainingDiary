@@ -43,7 +43,7 @@ CREATE TABLE results (
  comment VARCHAR(255) NOT NULL,
  created DATETIME,
  modified DATETIME,
- FOREIGN KEY trainings_result_key (training_id) REFERENCES trainings(id)
+ FOREIGN KEY trainings_results_key (training_id) REFERENCES trainings(id)
 );
 
 CREATE TABLE exerciseinformations ( 

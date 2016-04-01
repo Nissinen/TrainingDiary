@@ -1,0 +1,21 @@
+body{
+	background-color: #0E8B96;
+}
+
+#titlebox{
+	text-align:center;
+	color:#000000;
+}
+
+.left li {
+	color: #FFF;
+}
+
+.ButtonContent{
+	float:right;
+	display:block;
+}
+
+.button{
+	width:150px;
+}

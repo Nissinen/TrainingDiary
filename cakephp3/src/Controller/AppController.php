@@ -30,6 +30,7 @@ class AppController extends Controller
 
     public function beforeFilter(Event $event) {
         $this->set('loggedUser', $this->Auth->user());
+        $this->Auth->allow('display');
     }
 
     /**
@@ -69,6 +70,10 @@ class AppController extends Controller
     {
         // Admin can access every action
         if (isset($user['role']) && $user['role'] === 'admin') {
+            return true;
+        }
+
+        if ($this->request->action === 'display') {
             return true;
         }
 

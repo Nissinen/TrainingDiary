@@ -33,7 +33,7 @@ class TrainingsController extends AppController
             $this->request->action === 'delete') {
             return true;
         }
-        
+
         return parent::isAuthorized($user);
     }
 

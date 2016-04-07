@@ -64,32 +64,12 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 					<?= $this->Html->link('Register', '/users/add', array('class' => 'button')); ?>
 					<?= $this->Form->end() ?>
 				</div>
-				Lorem ipsum dolom salor <br>
-				Lorem ipsum dolom salor <br>
-				Lorem ipsum dolom salor <br>
-				Lorem ipsum dolom salor <br>
-				Lorem ipsum dolom salor <br>
+				<p>Please log in and get ready to exercise!</p>
+				<p class="image"><?= $this->Html->image('bodybuilder.jpg',array('alt'=>'iaso'));?></p>
+				<p>We are still testing the system. If you have any problems with your profile, please contact admins.
+					Try to explain problem clearly so we can fix it ASAP! </p>
             </div>
         </div>
-
-     <!--   <div class="row">
-            <div class="columns large-6">
-                <h3>Editing this Page</h3>
-                <ul>
-                    <li>To change the content of this page, edit: src/Template/Pages/home.ctp.</li>
-                    <li>You can also add some CSS styles for your pages at: webroot/css/.</li>
-                </ul>
-            </div>
-            <div class="columns large-6">
-                <h3>Getting Started</h3>
-                <ul>
-                    <li><a target="_blank" href="http://book.cakephp.org/3.0/en/">CakePHP 3.0 Docs</a></li>
-                    <li><a target="_blank" href="http://book.cakephp.org/3.0/en/tutorials-and-examples/bookmarks/intro.html">The 15 min Bookmarker Tutorial</a></li>
-                    <li><a target="_blank" href="http://book.cakephp.org/3.0/en/tutorials-and-examples/blog/blog.html">The 15 min Blog Tutorial</a></li>
-                </ul>
-                <p>
-            </div>
-        </div>-->
     </div>
     <footer>
     </footer>

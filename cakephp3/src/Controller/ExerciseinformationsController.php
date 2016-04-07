@@ -23,6 +23,28 @@ class ExerciseinformationsController extends AppController
         $this->set(compact('exerciseinformations'));
         $this->set('_serialize', ['exerciseinformations']);
     }
+	
+	public function isAuthorized($user)
+    {
+        // Users can edit their own information
+        if ($this->request->action === 'edit' && $user['role'] === 'user') {
+            $user_id = $this->request->params['pass'][0];
+            //debug($user_id);
+            if($user_id == $user['id']) {
+                return true;
+            }
+        }
+
+        // Anyone can access methods below
+        if ($this->request->action === 'index' ||
+            $this->request->action === 'view' ||
+            $this->request->action === 'add' ||
+            $this->request->action === 'delete') {
+            return true;
+        }
+
+        return parent::isAuthorized($user);
+    }
 
     /**
      * View method

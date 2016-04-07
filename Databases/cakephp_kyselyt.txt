@@ -1,0 +1,133 @@
+Trainings
+	#INSERT
+		INSERT INTO trainings (
+		  user_id, title, duration, created, 
+		  modified
+		) 
+		VALUES 
+		  (
+			6, 'Esimerkkitreeni', '45', '2016-04-07 14:13:57', 
+			'2016-04-07 14:13:57'
+		  )
+		  
+	#SELECT
+		SELECT
+		  Trainings.id AS `Trainings__id`,
+		  Trainings.user_id AS `Trainings__user_id`,
+		  Trainings.title AS `Trainings__title`,
+		  Trainings.duration AS `Trainings__duration`,
+		  Trainings.created AS `Trainings__created`,
+		  Trainings.modified AS `Trainings__modified`,
+		  Users.id AS `Users__id`,
+		  Users.username AS `Users__username`,
+		  Users.email AS `Users__email`,
+		  Users.password AS `Users__password`,
+		  Users.firstname AS `Users__firstname`,
+		  Users.lastname AS `Users__lastname`,
+		  Users.created AS `Users__created`,
+		  Users.modified AS `Users__modified`,
+		  Users.role AS `Users__role`
+		FROM
+		  trainings Trainings
+		  INNER JOIN users Users ON Users.id = (Trainings.user_id)
+		LIMIT
+		  20 OFFSET 0
+
+Users
+	#INSERT
+		INSERT INTO users (
+		  username, email, password, firstname, 
+		  lastname, created, modified
+		) 
+		VALUES 
+		  (
+			'Esimerkki', 'esimerkki@gmail.com', 
+			'y$RiiSVLDkVRabHSTt8NJDs.quF0cgmvnm5qKtn4YuClKt3iP0Ra5Sa', 
+			'Erkki', 'Esimerkki', '2016-04-07 14:17:53', 
+			'2016-04-07 14:17:53'
+		  )
+		  
+	#SELECT
+		SELECT 
+		  Users.id AS `Users__id`, 
+		  Users.username AS `Users__username`, 
+		  Users.email AS `Users__email`, 
+		  Users.password AS `Users__password`, 
+		  Users.firstname AS `Users__firstname`, 
+		  Users.lastname AS `Users__lastname`, 
+		  Users.created AS `Users__created`, 
+		  Users.modified AS `Users__modified`, 
+		  Users.role AS `Users__role` 
+		FROM 
+		  users Users 
+		LIMIT 
+		  20 OFFSET 0
+
+Exercices
+	#INSERT
+		INSERT INTO exercises (title, maxweight) 
+			VALUES 
+			  ('Etukyykky', 65)
+			  
+	#SELECT
+		SELECT 
+		  Exercises.id AS `Exercises__id`, 
+		  Exercises.title AS `Exercises__title`, 
+		  Exercises.maxweight AS `Exercises__maxweight` 
+		FROM 
+		  exercises Exercises 
+		LIMIT 
+		  20 OFFSET 0
+	
+Results
+	#INSERT
+		INSERT INTO results (
+		  training_id, comment, created, modified
+		) 
+		VALUES 
+		  (
+			1, 'Rintatreeni', '2016-04-07 14:26:07', 
+			'2016-04-07 14:26:07'
+		  )
+		  
+	#SELECT
+		SELECT 
+		  Results.id AS `Results__id`, 
+		  Results.training_id AS `Results__training_id`, 
+		  Results.comment AS `Results__comment`, 
+		  Results.created AS `Results__created`, 
+		  Results.modified AS `Results__modified`, 
+		  Trainings.id AS `Trainings__id`, 
+		  Trainings.user_id AS `Trainings__user_id`, 
+		  Trainings.title AS `Trainings__title`, 
+		  Trainings.duration AS `Trainings__duration`, 
+		  Trainings.created AS `Trainings__created`, 
+		  Trainings.modified AS `Trainings__modified` 
+		FROM 
+		  results Results 
+		  INNER JOIN trainings Trainings ON Trainings.id = (Results.training_id) 
+		LIMIT 
+		  20 OFFSET 0
+		  
+ExerciseInformations
+	#INSERT
+		INSERT INTO exerciseinformations (
+		  title, weight, breakduration, repetition, 
+		  setAmount
+		) 
+		VALUES 
+		  ('5x5', 65, '', 5, 5)
+		  
+	#SELECT
+		SELECT 
+		  Exerciseinformations.id AS `Exerciseinformations__id`, 
+		  Exerciseinformations.title AS `Exerciseinformations__title`, 
+		  Exerciseinformations.weight AS `Exerciseinformations__weight`, 
+		  Exerciseinformations.breakduration AS `Exerciseinformations__breakduration`, 
+		  Exerciseinformations.repetition AS `Exerciseinformations__repetition`, 
+		  Exerciseinformations.setAmount AS `Exerciseinformations__setAmount` 
+		FROM 
+		  exerciseinformations Exerciseinformations 
+		LIMIT 
+		  20 OFFSET 0
+		

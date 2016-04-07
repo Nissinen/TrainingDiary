@@ -1,0 +1,7 @@
+DROP TABLE trainings_exercises;
+DROP TABLE exercises_exerciseinformations;
+DROP TABLE exerciseinformations;
+DROP TABLE exercises;
+DROP TABLE results;
+DROP TABLE trainings;
+DROP TABLE users

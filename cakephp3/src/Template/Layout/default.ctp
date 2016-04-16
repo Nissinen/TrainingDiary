@@ -43,9 +43,15 @@ $cakeDescription = 'TrainingDiary';
             <ul class="left">
                 <?php if ($this->request->session()->read('Auth.User')) { ?>
                     <h4> <li>User: <?= $this->Html->link(__($loggedUser['username']), ['controller' => 'users', 'action' => 'view', $loggedUser['id']])?></li> </h4>
-                    <li>ID: <?= $loggedUser['id'] ?></li>
-                    <li>Role: <?= $loggedUser['role'] ?></li>
-                    <li>Created: <?= $loggedUser['created'] ?></li>
+                <!--    <li>ID: <?= $loggedUser['id'] ?></li>-->
+				<?php
+				if($loggedUser['role'] === 'admin'){
+                    echo "<li>Role: ";
+					echo $loggedUser['role']; 
+					echo "</li>";
+					}
+					?>
+                <!--    <li>Created: <?= $loggedUser['created'] ?></li> -->
                 <?php } ?>
             </ul>
         </section>

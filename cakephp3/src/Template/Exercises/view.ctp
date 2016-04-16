@@ -18,10 +18,10 @@
             <th><?= __('Title') ?></th>
             <td><?= h($exercise->title) ?></td>
         </tr>
-        <tr>
+       <!-- <tr>
             <th><?= __('Id') ?></th>
             <td><?= $this->Number->format($exercise->id) ?></td>
-        </tr>
+        </tr>-->
         <tr>
             <th><?= __('Maxweight') ?></th>
             <td><?= $this->Number->format($exercise->maxweight) ?></td>
@@ -32,7 +32,7 @@
         <?php if (!empty($exercise->exerciseinformations)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th><?= __('Id') ?></th>
+                <!--<th><?= __('Id') ?></th>-->
                 <th><?= __('Title') ?></th>
                 <th><?= __('Weight') ?></th>
                 <th><?= __('Breakduration') ?></th>
@@ -42,7 +42,7 @@
             </tr>
             <?php foreach ($exercise->exerciseinformations as $exerciseinformations): ?>
             <tr>
-                <td><?= h($exerciseinformations->id) ?></td>
+               <!-- <td><?= h($exerciseinformations->id) ?></td>-->
                 <td><?= h($exerciseinformations->title) ?></td>
                 <td><?= h($exerciseinformations->weight) ?></td>
                 <td><?= h($exerciseinformations->breakduration) ?></td>
@@ -63,8 +63,8 @@
         <?php if (!empty($exercise->trainings)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th><?= __('Id') ?></th>
-                <th><?= __('User Id') ?></th>
+               <!-- <th><?= __('Id') ?></th>
+                <th><?= __('User Id') ?></th>-->
                 <th><?= __('Title') ?></th>
                 <th><?= __('Duration') ?></th>
                 <th><?= __('Created') ?></th>
@@ -73,8 +73,8 @@
             </tr>
             <?php foreach ($exercise->trainings as $trainings): ?>
             <tr>
-                <td><?= h($trainings->id) ?></td>
-                <td><?= h($trainings->user_id) ?></td>
+               <!-- <td><?= h($trainings->id) ?></td>
+                <td><?= h($trainings->user_id) ?></td>-->
                 <td><?= h($trainings->title) ?></td>
                 <td><?= h($trainings->duration) ?></td>
                 <td><?= h($trainings->created) ?></td>

@@ -11,7 +11,7 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
+               <!-- <th><?= $this->Paginator->sort('id') ?></th> -->
                 <th><?= $this->Paginator->sort('title') ?></th>
                 <th><?= $this->Paginator->sort('weight') ?></th>
                 <th><?= $this->Paginator->sort('breakduration') ?></th>
@@ -23,7 +23,7 @@
         <tbody>
             <?php foreach ($exerciseinformations as $exerciseinformation): ?>
             <tr>
-                <td><?= $this->Number->format($exerciseinformation->id) ?></td>
+                <!--<td><?= $this->Number->format($exerciseinformation->id) ?></td> -->
                 <td><?= h($exerciseinformation->title) ?></td>
                 <td><?= $this->Number->format($exerciseinformation->weight) ?></td>
                 <td><?= h($exerciseinformation->breakduration) ?></td>

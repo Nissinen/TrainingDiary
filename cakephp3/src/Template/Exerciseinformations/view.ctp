@@ -20,10 +20,10 @@
             <th><?= __('Breakduration') ?></th>
             <td><?= h($exerciseinformation->breakduration) ?></td>
         </tr>
-        <tr>
+        <!--<tr>
             <th><?= __('Id') ?></th>
             <td><?= $this->Number->format($exerciseinformation->id) ?></td>
-        </tr>
+        </tr>-->
         <tr>
             <th><?= __('Weight') ?></th>
             <td><?= $this->Number->format($exerciseinformation->weight) ?></td>
@@ -42,14 +42,14 @@
         <?php if (!empty($exerciseinformation->exercises)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th><?= __('Id') ?></th>
+               <!-- <th><?= __('Id') ?></th> -->
                 <th><?= __('Title') ?></th>
                 <th><?= __('Maxweight') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($exerciseinformation->exercises as $exercises): ?>
             <tr>
-                <td><?= h($exercises->id) ?></td>
+              <!--  <td><?= h($exercises->id) ?></td> -->
                 <td><?= h($exercises->title) ?></td>
                 <td><?= h($exercises->maxweight) ?></td>
                 <td class="actions">

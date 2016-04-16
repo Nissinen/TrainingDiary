@@ -28,10 +28,10 @@
             <th><?= __('Duration') ?></th>
             <td><?= h($training->duration) ?></td>
         </tr>
-        <tr>
+       <!-- <tr>
             <th><?= __('Id') ?></th>
             <td><?= $this->Number->format($training->id) ?></td>
-        </tr>
+        </tr>-->
         <tr>
             <th><?= __('Created') ?></th>
             <td><?= h($training->created) ?></td>
@@ -46,8 +46,8 @@
         <?php if (!empty($training->results)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th><?= __('Id') ?></th>
-                <th><?= __('Training Id') ?></th>
+               <!-- <th><?= __('Id') ?></th>
+                <th><?= __('Training Id') ?></th>-->
                 <th><?= __('Comment') ?></th>
                 <th><?= __('Created') ?></th>
                 <th><?= __('Modified') ?></th>
@@ -55,8 +55,8 @@
             </tr>
             <?php foreach ($training->results as $results): ?>
             <tr>
-                <td><?= h($results->id) ?></td>
-                <td><?= h($results->training_id) ?></td>
+               <!-- <td><?= h($results->id) ?></td>
+                <td><?= h($results->training_id) ?></td>-->
                 <td><?= h($results->comment) ?></td>
                 <td><?= h($results->created) ?></td>
                 <td><?= h($results->modified) ?></td>
@@ -75,14 +75,14 @@
         <?php if (!empty($training->exercises)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th><?= __('Id') ?></th>
+               <!-- <th><?= __('Id') ?></th>-->
                 <th><?= __('Title') ?></th>
                 <th><?= __('Maxweight') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($training->exercises as $exercises): ?>
             <tr>
-                <td><?= h($exercises->id) ?></td>
+               <!-- <td><?= h($exercises->id) ?></td>-->
                 <td><?= h($exercises->title) ?></td>
                 <td><?= h($exercises->maxweight) ?></td>
                 <td class="actions">

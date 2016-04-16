@@ -13,7 +13,7 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
+               <!-- <th><?= $this->Paginator->sort('id') ?></th> -->
                 <th><?= $this->Paginator->sort('title') ?></th>
                 <th><?= $this->Paginator->sort('duration') ?></th>
                 <th><?= $this->Paginator->sort('created') ?></th>
@@ -24,7 +24,7 @@
         <tbody>
             <?php foreach ($trainings as $training): ?>
             <tr>
-                <td><?= $this->Number->format($training->id) ?></td>
+              <!--  <td><?= $this->Number->format($training->id) ?></td> -->
                 <td><?= h($training->title) ?></td>
                 <td><?= h($training->duration) ?></td>
                 <td><?= h($training->created) ?></td>

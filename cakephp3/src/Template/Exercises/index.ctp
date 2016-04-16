@@ -13,7 +13,7 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
+              <!--  <th><?= $this->Paginator->sort('id') ?></th> -->
                 <th><?= $this->Paginator->sort('title') ?></th>
                 <th><?= $this->Paginator->sort('maxweight') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
@@ -22,7 +22,7 @@
         <tbody>
             <?php foreach ($exercises as $exercise): ?>
             <tr>
-                <td><?= $this->Number->format($exercise->id) ?></td>
+               <!-- <td><?= $this->Number->format($exercise->id) ?></td> -->
                 <td><?= h($exercise->title) ?></td>
                 <td><?= $this->Number->format($exercise->maxweight) ?></td>
                 <td class="actions">

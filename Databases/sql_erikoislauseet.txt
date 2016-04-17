@@ -1,0 +1,19 @@
+Laskee yhteen yksittäisen harjoituksen liikkeiden maksimipainot
+---------------------------------------------------------------
+SELECT training_id, exercise_id, sum(maxweight) FROM trainings_exercises TE
+JOIN (SELECT id, title, maxweight FROM exercises) as E ON E.id = TE.exercise_id
+WHERE TE.training_id = 1
+
+
+Laskee yhteen käyttäjän yksittäisen harjoituksen liikkeiden sarjapainot
+---------------------------------------------------------------
+SELECT training_id, exercise_id, sum(weight) FROM trainings_exercises TE
+JOIN (SELECT id, title FROM exercises) as E ON E.id = TE.exercise_id
+JOIN(SELECT exercise_id as EI_id,exerciseinformation_id FROM exercises_exerciseinformations) as EI ON
+EI.EI_id = E.id
+JOIN(SELECT id, weight FROM exerciseinformations) as EIF ON EIF.id = exercise_id
+WHERE TE.training_id = 1
+
+PIVOT
+-------
+SELECT duration, sum(case when title = 'Rinta' then user_id end) Rinta, sum(case when title = 'Jalka' then user_id end) Jalka, sum(case when title = 'Esimerkkitreeni' then user_id end) Esimerkkitreeni FROM trainings

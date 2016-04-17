@@ -11,7 +11,7 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
+                <!--<th><?= $this->Paginator->sort('id') ?></th>-->
                 <th><?= $this->Paginator->sort('training_id') ?></th>
                 <th><?= $this->Paginator->sort('comment') ?></th>
                 <th><?= $this->Paginator->sort('created') ?></th>
@@ -22,7 +22,7 @@
         <tbody>
             <?php foreach ($results as $result): ?>
             <tr>
-                <td><?= $this->Number->format($result->id) ?></td>
+              <!--  <td><?= $this->Number->format($result->id) ?></td>-->
                 <td><?= $result->has('training') ? $this->Html->link($result->training->title, ['controller' => 'Trainings', 'action' => 'view', $result->training->id]) : '' ?></td>
                 <td><?= h($result->comment) ?></td>
                 <td><?= h($result->created) ?></td>

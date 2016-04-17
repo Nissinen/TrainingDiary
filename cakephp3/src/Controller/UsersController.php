@@ -62,7 +62,7 @@ class UsersController extends AppController
             if($this->request->is('post')) {
                 if($user) {
                     $this->Auth->setUser($user);
-                    return $this->redirect($this->Auth->redirectUrl());
+                    return $this->redirect($this->Auth->redirectUrl(['controller' => 'Users', 'action' => 'view', $user['id']]));
                 }
                 //User not identified
                 $this->Flash->error('Your username or password is incorrect');

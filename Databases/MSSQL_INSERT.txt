@@ -1,0 +1,54 @@
+/* Users */
+INSERT INTO users (
+	username, email, password, firstname, 
+	lastname, created, modified
+) 
+VALUES 
+(
+	'Esimerkki', 'esimerkki@gmail.com', 
+	'y$RiiSVLDkVRabHSTt8NJDs.quF0cgmvnm5qKtn4YuClKt3iP0Ra5Sa', 
+	'Erkki', 'Esimerkki', '2016-04-07 14:17:53', 
+	'2016-04-07 14:17:53'
+);
+
+/* Trainings */
+INSERT INTO trainings (
+	user_id, title, duration, created, 
+	modified
+) 
+VALUES 
+(
+	1, 'Esimerkkitreeni', '45', '2016-04-07 14:13:57', 
+	'2016-04-07 14:13:57'
+);
+
+/* Exercises */
+INSERT INTO exercises (title, maxweight) 
+VALUES 
+  ('Etukyykky', 65);
+  
+/* Exerciseinformations */
+INSERT INTO exerciseinformations (
+	title, weight, breakduration, repetition, 
+	setAmount
+) 
+VALUES 
+	('5x5', 65, '', 5, 5);
+
+/* Results */
+INSERT INTO results (
+	training_id, comment, created, modified
+) 
+VALUES 
+(
+	1, 'Rintatreeni', '2016-04-07 14:26:07', 
+	'2016-04-07 14:26:07'
+);
+
+/* trainings_exercises */
+
+insert into dbo.trainings_exercises (exercise_id, trainings_id) values((select id from exercises where title = 'Etukyykky'), (select id from trainings where title = 'Esimerkkitreeni'));
+
+/* exercises_exerciseinformations */
+
+insert into dbo.exercises_exerciseinformations (exerciseinformation_id, exercise_id) values((select id from exerciseinformations where title = '5x5'), (select id from exercises where title = 'Etukyykky'))

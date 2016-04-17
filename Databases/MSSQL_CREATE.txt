@@ -1,0 +1,66 @@
+
+CREATE TABLE users ( 
+	id INT IDENTITY(1,1) PRIMARY KEY,
+	email VARCHAR(50) NOT NULL UNIQUE,
+	username VARCHAR(50) NOT NULL UNIQUE,
+	password VARCHAR(255) NOT NULL,
+	firstname VARCHAR(50) NOT NULL,
+	lastname VARCHAR(50) NOT NULL,
+	created DATETIME,
+	modified DATETIME,
+	role VARCHAR(20) DEFAULT 'user'
+);
+
+CREATE TABLE trainings ( 
+	id INT IDENTITY(1,1) PRIMARY KEY,
+	user_id INT NOT NULL,
+	title VARCHAR(50) NOT NULL,
+	duration VARCHAR(20),
+	created DATETIME,
+	modified DATETIME,
+	constraint user_trainings_key FOREIGN KEY (user_id) REFERENCES users(id) 
+);
+
+CREATE TABLE exercises ( 
+	id INT IDENTITY(1,1) PRIMARY KEY,
+	title VARCHAR(50) NOT NULL UNIQUE,
+	maxweight INT NULL,
+);
+
+CREATE TABLE trainings_exercises (
+	id INT identity(1,1) NOT NULL,
+	exercise_id INT NOT NULL, 
+	trainings_id int not null,
+	
+	constraint PK_trainings_exercises PRIMARY KEY (id),
+    constraint FK_exercises_trainings_key FOREIGN KEY (exercise_id) REFERENCES exercises(id),
+	constraint FK_trainings_exercises_key FOREIGN KEY (trainings_id) REFERENCES trainings(id)
+);
+
+CREATE TABLE results ( 
+	id INT IDENTITY(1,1) PRIMARY KEY,
+	training_id INT NOT NULL,
+	comment VARCHAR(255) NOT NULL,
+	created DATETIME,
+	modified DATETIME,
+	constraint trainings_results_key FOREIGN KEY (training_id) REFERENCES trainings(id)
+);
+
+CREATE TABLE exerciseinformations ( 
+	id INT IDENTITY(1,1) PRIMARY KEY,
+	title VARCHAR(50),
+	weight INT NOT NULL,
+	breakduration VARCHAR(20),
+	repetition INT NOT NULL,
+	setAmount INT NOT NULL
+);
+
+CREATE TABLE exercises_exerciseinformations(
+	id INT identity(1,1) NOT NULL,
+	exerciseinformation_id INT NOT NULL, 
+	exercise_id INT NOT NULL,
+
+	constraint PK_exercises_exercisesinformations PRIMARY KEY (id),
+	constraint FK_exerciseinformations_exercises FOREIGN KEY (exerciseinformation_id) REFERENCES exerciseinformations(id),
+	constraint FK_exercises_exerciseinformations_key FOREIGN KEY (exercise_id) REFERENCES exercises(id)
+);

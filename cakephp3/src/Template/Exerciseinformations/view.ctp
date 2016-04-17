@@ -1,8 +1,6 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Exerciseinformation'), ['action' => 'edit', $exerciseinformation->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Exerciseinformation'), ['action' => 'delete', $exerciseinformation->id], ['confirm' => __('Are you sure you want to delete # {0}?', $exerciseinformation->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Exerciseinformations'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Exerciseinformation'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Exercises'), ['controller' => 'Exercises', 'action' => 'index']) ?> </li>

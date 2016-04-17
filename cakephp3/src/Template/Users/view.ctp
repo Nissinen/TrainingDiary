@@ -2,9 +2,14 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?php if($loggedUser['role'] == 'admin' || $loggedUser['id'] == $this->request->params['pass'][0]) {
-                echo $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]); } ?> </li>
-        <li><?php if($loggedUser['role'] == 'admin') { echo $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]); } ?> </li>
-    </ul>
+                echo $this->Html->link(__('Edit your profile'), ['action' => 'edit', $user->id]); } ?> </li>
+        <li><?= $this->Html->link(__('New Training'), ['controller' => 'Trainings', 'action' => 'add']) ?> </li>
+		<li><?= $this->Html->link(__('List Exercises'), ['controller' => 'Exercises', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Exercise'), ['controller' => 'Exercises', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Exerciseinformations'), ['controller' => 'Exerciseinformations', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Exerciseinformation'), ['controller' => 'Exerciseinformations', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('New Training Result'), ['controller' => 'Results', 'action' => 'add']) ?> </li>
+	</ul>
 </nav>
 <div class="users view large-9 medium-8 columns content">
     <div class="related">

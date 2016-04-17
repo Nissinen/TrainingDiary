@@ -16,10 +16,12 @@
 <div class="trainings view large-9 medium-8 columns content">
     <h3><?= h($training->title) ?></h3>
     <table class="vertical-table">
-        <tr>
+        <?php if($loggedUser['role'] == "admin") { ?>
+		<tr>
             <th><?= __('User') ?></th>
             <td><?= $training->has('user') ? $this->Html->link($training->user->id, ['controller' => 'Users', 'action' => 'view', $training->user->id]) : '' ?></td>
         </tr>
+		<?php } ?>
         <tr>
             <th><?= __('Title') ?></th>
             <td><?= h($training->title) ?></td>

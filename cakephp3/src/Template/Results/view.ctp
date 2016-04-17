@@ -10,7 +10,7 @@
     </ul>
 </nav>
 <div class="results view large-9 medium-8 columns content">
-    <h3><?= h($result->id) ?></h3>
+    <h3><?= h("Result") ?></h3>
     <table class="vertical-table">
         <tr>
             <th><?= __('Training') ?></th>
@@ -20,10 +20,10 @@
             <th><?= __('Comment') ?></th>
             <td><?= h($result->comment) ?></td>
         </tr>
-        <tr>
+        <!--<tr>
             <th><?= __('Id') ?></th>
             <td><?= $this->Number->format($result->id) ?></td>
-        </tr>
+        </tr>-->
         <tr>
             <th><?= __('Created') ?></th>
             <td><?= h($result->created) ?></td>

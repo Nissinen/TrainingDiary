@@ -1,14 +1,10 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Exercise'), ['action' => 'edit', $exercise->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Exercise'), ['action' => 'delete', $exercise->id], ['confirm' => __('Are you sure you want to delete # {0}?', $exercise->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Exercises'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Exercise'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Exerciseinformations'), ['controller' => 'Exerciseinformations', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Exerciseinformation'), ['controller' => 'Exerciseinformations', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Trainings'), ['controller' => 'Trainings', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Training'), ['controller' => 'Trainings', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="exercises view large-9 medium-8 columns content">
@@ -28,7 +24,7 @@
         </tr>
     </table>
     <div class="related">
-        <h4><?= __('Related Exerciseinformations') ?></h4>
+        <h4><?= __('Exerciseinformations') ?></h4>
         <?php if (!empty($exercise->exerciseinformations)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
@@ -59,7 +55,7 @@
         <?php endif; ?>
     </div>
     <div class="related">
-        <h4><?= __('Related Trainings') ?></h4>
+        <h4><?= __('Trainings') ?></h4>
         <?php if (!empty($exercise->trainings)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>

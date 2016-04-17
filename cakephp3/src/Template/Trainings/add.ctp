@@ -11,7 +11,13 @@
     <fieldset>
         <legend><?= __('Add Training') ?></legend>
         <?php
-            echo $this->Form->input('user_id', ['options' => $users]);
+			 if($loggedUser['role'] == "admin") { 
+				echo $this->Form->input('user_id', ['options' => $users]);
+			 }
+			 else {
+				 echo $this->Form->input('user_id', ['options' => $users]);
+			 }
+
             echo $this->Form->input('title');
             echo $this->Form->input('duration');
             echo $this->Form->input('exercises._ids', ['options' => $exercises]);

@@ -31,8 +31,10 @@
                 <td><?= h($training->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $training->id]) ?>
+					<?php if($loggedUser['role'] == "admin") { ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $training->id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $training->id], ['confirm' => __('Are you sure you want to delete # {0}?', $training->id)]) ?>
+					<?php } ?>
                 </td>
             </tr>
             <?php endforeach; ?>

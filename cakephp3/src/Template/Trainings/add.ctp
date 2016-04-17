@@ -12,10 +12,10 @@
         <legend><?= __('Add Training') ?></legend>
         <?php
 			 if($loggedUser['role'] == "admin") { 
-				echo $this->Form->input('user_id', ['options' => $users]);
+				echo $this->Form->input('user_id', ['options' => $users, 'value' => $loggedUser['id']]);
 			 }
 			 else {
-				 echo $this->Form->input('user_id', ['options' => $users]);
+				 echo $this->Form->hidden('user_id', ['options' => $users, 'value' => $loggedUser['id']]);
 			 }
 
             echo $this->Form->input('title');

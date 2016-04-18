@@ -12,12 +12,13 @@ group by  trainings.title
 
 Laskee yhteen käyttäjän yksittäisen harjoituksen liikkeiden sarjapainot
 ---------------------------------------------------------------
-SELECT training_id, exercise_id, sum(weight) FROM trainings_exercises TE
-JOIN (SELECT id, title FROM exercises) as E ON E.id = TE.exercise_id
-JOIN(SELECT exercise_id as EI_id,exerciseinformation_id FROM exercises_exerciseinformations) as EI ON
-EI.EI_id = E.id
-JOIN(SELECT id, weight FROM exerciseinformations) as EIF ON EIF.id = exercise_id
-WHERE TE.training_id = 1
+SELECT trainings_id, exercise_id, sum(weight) FROM trainings_exercises TE
+	JOIN (SELECT id, title FROM exercises) as E ON E.id = TE.exercise_id
+	JOIN(SELECT exercise_id as EI_id,exerciseinformation_id FROM exercises_exerciseinformations) as EI 
+	ON EI.EI_id = E.id
+	JOIN(SELECT id, weight FROM exerciseinformations) as EIF ON EIF.id = exercise_id
+	WHERE TE.trainings_id = 1
+	GROUP BY TE.trainings_id, TE.exercise_id
 
 PIVOT
 -------

@@ -1,8 +1,13 @@
 Laskee yhteen yksittäisen harjoituksen liikkeiden maksimipainot
 ---------------------------------------------------------------
-SELECT training_id, exercise_id, sum(maxweight) FROM trainings_exercises TE
-JOIN (SELECT id, title, maxweight FROM exercises) as E ON E.id = TE.exercise_id
-WHERE TE.training_id = 1
+SELECT 
+  trainings.title, 
+  sum(maxweight) as summa
+FROM trainings_exercises TE
+left JOIN (SELECT id, title, maxweight FROM exercises) as E ON E.id = TE.exercise_id
+left join trainings on TE.trainings_id = trainings.id
+WHERE TE.trainings_id = 1
+group by  trainings.title
 
 
 Laskee yhteen käyttäjän yksittäisen harjoituksen liikkeiden sarjapainot

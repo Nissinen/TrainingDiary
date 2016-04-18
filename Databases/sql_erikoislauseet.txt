@@ -20,9 +20,28 @@ SELECT trainings_id, exercise_id, sum(weight) FROM trainings_exercises TE
 	WHERE TE.trainings_id = 1
 	GROUP BY TE.trainings_id, TE.exercise_id
 
-PIVOT
+PIVOT (Ei järkevää toimintaa)
 -------
+Staattinen:
 SELECT *
 FROM exerciseinformations
 PIVOT(SUM(weight) 
       FOR title IN ("5x5")) AS PVTTable
+
+Dynaaminen:
+DECLARE @DynamicPivotQuery AS NVARCHAR(MAX)
+DECLARE @ColumnName AS NVARCHAR(MAX)
+ 
+--Get distinct values of the PIVOT Column 
+SELECT @ColumnName= ISNULL(@ColumnName + ',','') 
+       + QUOTENAME(title)
+FROM (SELECT DISTINCT title FROM exerciseinformations) AS ExerciseInformations
+ 
+--Prepare the PIVOT query using the dynamic 
+SET @DynamicPivotQuery = 
+  N'SELECT id, ' + @ColumnName + '
+    FROM exerciseinformations
+    PIVOT(SUM(weight) 
+          FOR title IN (' + @ColumnName + ')) AS PVTTable'
+--Execute the Dynamic Pivot Query
+EXEC sp_executesql @DynamicPivotQuery

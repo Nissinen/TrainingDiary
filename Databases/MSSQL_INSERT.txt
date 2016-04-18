@@ -22,10 +22,32 @@ VALUES
 	'2016-04-07 14:13:57'
 );
 
+INSERT INTO trainings (
+	user_id, title, duration, created, 
+	modified
+) 
+VALUES 
+(
+	1, 'Esimerkkitreeni2', '55', '2017-04-07 14:13:57', 
+	'2017-04-07 14:13:57'
+);
+
 /* Exercises */
 INSERT INTO exercises (title, maxweight) 
 VALUES 
   ('Etukyykky', 65);
+  
+INSERT INTO exercises (title, maxweight) 
+VALUES 
+  ('Takakyykky', 75);
+  
+INSERT INTO exercises (title, maxweight) 
+VALUES 
+  ('Sumokyykky', 60);
+  
+INSERT INTO exercises (title, maxweight) 
+VALUES 
+  ('Kyykky', 100);
   
 /* Exerciseinformations */
 INSERT INTO exerciseinformations (
@@ -34,6 +56,13 @@ INSERT INTO exerciseinformations (
 ) 
 VALUES 
 	('5x5', 65, '', 5, 5);
+	
+INSERT INTO exerciseinformations (
+	title, weight, breakduration, repetition, 
+	setAmount
+) 
+VALUES 
+	('3x5', 45, '', 3, 5);
 
 /* Results */
 INSERT INTO results (
@@ -49,6 +78,18 @@ VALUES
 
 insert into dbo.trainings_exercises (exercise_id, trainings_id) values((select id from exercises where title = 'Etukyykky'), (select id from trainings where title = 'Esimerkkitreeni'));
 
+insert into dbo.trainings_exercises (exercise_id, trainings_id) values((select id from exercises where title = 'Takakyykky'), (select id from trainings where title = 'Esimerkkitreeni'));
+
+insert into dbo.trainings_exercises (exercise_id, trainings_id) values((select id from exercises where title = 'Sumokyykky'), (select id from trainings where title = 'Esimerkkitreeni2'));
+
+insert into dbo.trainings_exercises (exercise_id, trainings_id) values((select id from exercises where title = 'Kyykky'), (select id from trainings where title = 'Esimerkkitreeni2'));
+
 /* exercises_exerciseinformations */
 
 insert into dbo.exercises_exerciseinformations (exerciseinformation_id, exercise_id) values((select id from exerciseinformations where title = '5x5'), (select id from exercises where title = 'Etukyykky'))
+
+insert into dbo.exercises_exerciseinformations (exerciseinformation_id, exercise_id) values((select id from exerciseinformations where title = '3x5'), (select id from exercises where title = 'Takakyykky'))
+
+insert into dbo.exercises_exerciseinformations (exerciseinformation_id, exercise_id) values((select id from exerciseinformations where title = '3x5'), (select id from exercises where title = 'Sumokyykky'))
+
+insert into dbo.exercises_exerciseinformations (exerciseinformation_id, exercise_id) values((select id from exerciseinformations where title = '5x5'), (select id from exercises where title = 'Kyykky'))

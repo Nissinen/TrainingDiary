@@ -22,4 +22,7 @@ SELECT trainings_id, exercise_id, sum(weight) FROM trainings_exercises TE
 
 PIVOT
 -------
-SELECT duration, sum(case when title = 'Rinta' then user_id end) Rinta, sum(case when title = 'Jalka' then user_id end) Jalka, sum(case when title = 'Esimerkkitreeni' then user_id end) Esimerkkitreeni FROM trainings
+SELECT *
+FROM exerciseinformations
+PIVOT(SUM(weight) 
+      FOR title IN ("5x5")) AS PVTTable

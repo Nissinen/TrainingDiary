@@ -49,6 +49,10 @@ INSERT INTO exercises (title, maxweight)
 VALUES 
   ('Kyykky', 100);
   
+INSERT INTO exercises (title, maxweight) 
+VALUES 
+  ('Penkkipunnerrus', 120);
+  
 /* Exerciseinformations */
 INSERT INTO exerciseinformations (
 	title, weight, breakduration, repetition, 
@@ -63,6 +67,13 @@ INSERT INTO exerciseinformations (
 ) 
 VALUES 
 	('3x5', 45, '', 3, 5);
+	
+INSERT INTO exerciseinformations (
+	title, weight, breakduration, repetition, 
+	setAmount
+) 
+VALUES 
+	('3x4', 85, '', 3, 4);
 
 /* Results */
 INSERT INTO results (
@@ -84,6 +95,8 @@ insert into dbo.trainings_exercises (exercise_id, trainings_id) values((select i
 
 insert into dbo.trainings_exercises (exercise_id, trainings_id) values((select id from exercises where title = 'Kyykky'), (select id from trainings where title = 'Esimerkkitreeni2'));
 
+insert into dbo.trainings_exercises (exercise_id, trainings_id) values((select id from exercises where title = 'Penkkipunnerrus'), (select id from trainings where title = 'Esimerkkitreeni'));
+
 /* exercises_exerciseinformations */
 
 insert into dbo.exercises_exerciseinformations (exerciseinformation_id, exercise_id) values((select id from exerciseinformations where title = '5x5'), (select id from exercises where title = 'Etukyykky'))
@@ -93,3 +106,5 @@ insert into dbo.exercises_exerciseinformations (exerciseinformation_id, exercise
 insert into dbo.exercises_exerciseinformations (exerciseinformation_id, exercise_id) values((select id from exerciseinformations where title = '3x5'), (select id from exercises where title = 'Sumokyykky'))
 
 insert into dbo.exercises_exerciseinformations (exerciseinformation_id, exercise_id) values((select id from exerciseinformations where title = '5x5'), (select id from exercises where title = 'Kyykky'))
+
+insert into dbo.exercises_exerciseinformations (exerciseinformation_id, exercise_id) values((select id from exerciseinformations where title = '3x4'), (select id from exercises where title = 'Penkkipunnerrus'))

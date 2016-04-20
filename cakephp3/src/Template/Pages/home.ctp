@@ -44,7 +44,6 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 					<p> Keep your trainings always avaible! You never know when you might need them. <p>
 				</div>
             </div>
-           <?php// Debugger::checkSecurityKeys(); ?>
             <div class="columns large-5 platform checks">
 
 					<h3> What is Training Diary? </h3>

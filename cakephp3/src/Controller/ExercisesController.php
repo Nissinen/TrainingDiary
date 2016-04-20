@@ -18,10 +18,8 @@ class ExercisesController extends AppController
     public function isAuthorized($user)
     {
         // Users can edit their own information
-        if ((($this->request->action === 'edit') || $this->request->action === 'delete')
-            && $user['role'] === 'user') {
+        if ((($this->request->action === 'edit')) && $user['role'] === 'user') {
             $user_id = $this->request->params['pass'][0];
-            //debug($user_id);
             if($user_id == $user['id']) {
                 return true;
             }

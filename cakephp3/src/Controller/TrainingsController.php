@@ -17,20 +17,12 @@ class TrainingsController extends AppController
      */
     public function isAuthorized($user)
     {
-        // Users can edit their own information
-        if ($this->request->action === 'edit' && $user['role'] === 'user') {
-            $user_id = $this->request->params['pass'][0];
-            //debug($user_id);
-            if($user_id == $user['id']) {
-                return true;
-            }
-        }
-
         // Anyone can access methods below
         if ($this->request->action === 'index' ||
             $this->request->action === 'view' ||
             $this->request->action === 'add' ||
-            $this->request->action === 'delete') {
+            $this->request->action === 'delete' ||
+            $this->request->action === 'edit') {
             return true;
         }
 
@@ -105,19 +97,25 @@ class TrainingsController extends AppController
         $training = $this->Trainings->get($id, [
             'contain' => ['Exercises']
         ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $training = $this->Trainings->patchEntity($training, $this->request->data);
-            if ($this->Trainings->save($training)) {
-                $this->Flash->success(__('The training has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The training could not be saved. Please, try again.'));
+
+        if($this->Auth->User('id') == $training['user_id'] || $this->Auth->User('role') == 'admin') {
+            if ($this->request->is(['patch', 'post', 'put'])) {
+                $training = $this->Trainings->patchEntity($training, $this->request->data);
+                if ($this->Trainings->save($training)) {
+                    $this->Flash->success(__('The training has been saved.'));
+                    return $this->redirect('/users/view/'.$training['user_id'].'');
+                } else {
+                    $this->Flash->error(__('The training could not be saved. Please, try again.'));
+                }
             }
+            $users = $this->Trainings->Users->find('list', ['limit' => 200]);
+            $exercises = $this->Trainings->Exercises->find('list', ['limit' => 200]);
+            $this->set(compact('training', 'users', 'exercises'));
+            $this->set('_serialize', ['training']);
+        } else {
+            $this->Flash->error(__('You dont have sufficient permissions.'));
+            return $this->redirect('/users/view/'.$training['user_id'].'');
         }
-        $users = $this->Trainings->Users->find('list', ['limit' => 200]);
-        $exercises = $this->Trainings->Exercises->find('list', ['limit' => 200]);
-        $this->set(compact('training', 'users', 'exercises'));
-        $this->set('_serialize', ['training']);
     }
 
     /**
@@ -131,11 +129,15 @@ class TrainingsController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $training = $this->Trainings->get($id);
-        if ($this->Trainings->delete($training)) {
-            $this->Flash->success(__('The training has been deleted.'));
+        if($this->Auth->User('id') == $training['user_id'] || $this->Auth->User('role') == 'admin') {
+            if ($this->Trainings->delete($training)) {
+                $this->Flash->success(__('The training has been deleted.'));
+            } else {
+                $this->Flash->error(__('The training could not be deleted. Please, try again.'));
+            }
         } else {
-            $this->Flash->error(__('The training could not be deleted. Please, try again.'));
+            $this->Flash->error(__('You dont have sufficient permissions.'));
         }
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect('/users/view/'.$training['user_id'].'');
     }
 }
